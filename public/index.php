@@ -7,6 +7,7 @@ use Controllers\AppController;
 use Controllers\UsuarioController;
 use Controllers\PermisoController;
 use Controllers\RolController;
+use Controllers\DetalleController;
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
@@ -33,6 +34,9 @@ $router->post('/API/roles/modificar', [RolController::class,'modificarAPI'] );
 $router->post('/API/roles/eliminar', [RolController::class,'eliminarAPI'] );
 $router->get('/API/roles/buscar', [RolController::class,'buscarAPI'] );
 
+
+$router->get('/usuarios/estadistica', [DetalleController::class,'estadistica']);
+$router->get('/API/usuarios/estadisticaUsu', [DetalleController::class,'detalleUsuariosAPI']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
