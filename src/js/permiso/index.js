@@ -16,3 +16,16 @@ btnModificar.disabled = true
 btnModificar.parentElement.style.display = 'none'
 btnCancelar.disabled = true
 btnCancelar.parentElement.style.display = 'none'
+
+
+
+let contador = 1; 
+const datatable = new Datatable('#tablaClientes', {
+    language : lenguaje,
+    data : null,
+    columns: [
+        {
+            title : 'NO',
+            render : () => contador ++
+            
+        },
