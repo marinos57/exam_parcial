@@ -57,3 +57,6 @@ const guardar = async (evento) => {
 }
 
 formulario.addEventListener('submit', guardar);
+
+
+//HASTA ACA FUNCIONA BIEN LA VISTA GUARDAR GUARDA EL REGISTRO
