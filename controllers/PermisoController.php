@@ -112,7 +112,38 @@ class PermisoController
             ]);
         }
     }
-    
+
+    public static function eliminarAPI()
+    {
+        try {
+            $permiso_id = $_POST['permiso_id'];
+            $permiso = Permiso::find($permiso_id);
+            $permiso->permiso_situacion = 0;
+            $resultado = $permiso->actualizar();
+
+            if ($resultado['resultado'] == 1) {
+                echo json_encode([
+                    'mensaje' => 'Registro eliminado correctamente',
+                    'codigo' => 1
+                ]);
+            } else {
+                echo json_encode([
+                    'mensaje' => 'Ocurrió un error',
+                    'codigo' => 0
+                ]);
+            }
+           
+        } catch (Exception $e) {
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje' => 'Ocurrió un error',
+                'codigo' => 0
+            ]);
+        }
+    }
+
+
+
 
 
 
