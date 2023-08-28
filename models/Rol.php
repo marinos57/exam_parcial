@@ -14,16 +14,13 @@ class Rol extends ActiveRecord{
 
         $this->rol_id = $args['rol_id'] ?? null;
         $this->rol_nombre = $args['rol_nombre'] ?? '';
-        $this->rol_s = $args['rol_nombre'] ?? '';
+        $this->rol_situacion = $args['rol_situacion'] ?? '1';
 
-
-        
-
-
+    
 
     }
 
 
 
 
-     }
+}
