@@ -26,15 +26,16 @@ const chartVentas = new Chart(context, {
 })
 
 const getEstadisticas = async () => {
-    const url = `/exam_parcial/API/usuarios/detalleUsuarios`;
+    const url = `/exam_parcial/API/usuarios/detalleUsuarios2`;
     const config = {
         method : 'GET'
+        
     }
 
     try {
         const respuesta = await fetch(url, config)
         const data = await respuesta.json();
-        // console.log(data)
+        // console.log(data);
         // return;
         chartVentas.data.labels = [];
         chartVentas.data.datasets[0].data = [];
@@ -45,7 +46,7 @@ const getEstadisticas = async () => {
         if(data){
 
             data.forEach( registro => {
-                chartVentas.data.labels.push(registro.usu_estado)
+                chartVentas.data.labels.push(registro.rol_nombre)
                 chartVentas.data.datasets[0].data.push(registro.cantidad_usuarios)
                 chartVentas.data.datasets[0].backgroundColor.push(getRandomColor())
             });

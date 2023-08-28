@@ -10,6 +10,8 @@ module.exports = {
     'js/permiso/index' : './src/js/permiso/index.js',
     'js/roles/index' : './src/js/roles/index.js',
     'js/usuario/estadistica' : './src/js/usuario/estadistica.js',
+    'js/usuario/estadistica2' : './src/js/usuario/estadistica2.js',
+
 
 
 

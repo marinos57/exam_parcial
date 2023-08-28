@@ -38,7 +38,11 @@ $router->get('/API/roles/buscar', [RolController::class,'buscarAPI'] );
 
 
 $router->get('/usuarios/estadistica', [DetalleController::class,'estadistica']);
-$router->get('/API/usuarios/estadisticaUsu', [DetalleController::class,'detalleUsuariosAPI']);
+$router->get('/API/usuarios/detalleUsuarios', [DetalleController::class,'detalleUsuariosAPI']);
+
+//rutas 
+$router->get('/usuarios/estadistica2', [DetalleController::class,'estadistica2']);
+$router->get('/API/usuarios/detalleUsuarios2', [DetalleController::class,'detalleUsuarios2API']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
