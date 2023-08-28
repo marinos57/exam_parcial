@@ -24,6 +24,14 @@ $router->post('/API/permisos/activar', [PermisoController::class,'activarAPI'] )
 $router->post('/API/permisos/desactivar', [PermisoController::class,'desactivarAPI'] );
 
 
+//rutas roles
+
+$router->post('/API/roles/guardar', [RolController::class,'guardarAPI'] );
+$router->post('/API/roles/modificar', [RolController::class,'modificarAPI'] );
+$router->post('/API/roles/eliminar', [RolController::class,'eliminarAPI'] );
+$router->get('/API/roles/buscar', [RolController::class,'buscarAPI'] );
+
+
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
