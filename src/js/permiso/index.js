@@ -379,6 +379,26 @@ const desactivar = async (e) => {
 }
 
 
-///
+/// colocar datos
+
+
+const colocarDatos = (dataset) => {
+    formulario.permiso_usuario.value = dataset.usuario;
+    formulario.permiso_rol.value = dataset.rol;
+
+    formulario.permiso_id.value = dataset.id;
+
+    btnGuardar.disabled = true
+    btnGuardar.parentElement.style.display = 'none';
+    btnBuscar.disabled = true
+    btnBuscar.parentElement.style.display = 'none';
+    btnModificar.disabled = false
+    btnModificar.parentElement.style.display = '';
+    btnCancelar.disabled = false
+    btnCancelar.parentElement.style.display = '';
+
+  
+}
+
 
 
