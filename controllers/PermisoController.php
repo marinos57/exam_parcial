@@ -173,6 +173,19 @@ class PermisoController
     }
 
 
+    public static function desactivarAPI(){
+
+        try {
+            $usu_id = $_POST['usu_id'];
+            $sql = "UPDATE usuario set usu_estado = 'INACTIVO' where usu_id = ${usu_id}";
+            $resultado = Usuario::SQL($sql);
+            $resultado=1;
+
+
+
+
+
+
 
 
 
