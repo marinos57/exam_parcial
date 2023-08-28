@@ -8,6 +8,10 @@ use MVC\Router;
 
 class RolController{
 
+    public static function index(Router $router){
+        $router->render('roles/index', []);
+        
+    }
     public static function guardarAPI(){
 
 
