@@ -203,6 +203,12 @@ class PermisoController
         }
     }
 
+
+    public static function buscarAPI()
+    {
+        $usu_id = $_GET['usu_id'];
+        $rol_id = $_GET['rol_id'];
+
         
            
 
