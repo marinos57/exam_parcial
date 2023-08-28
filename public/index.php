@@ -16,6 +16,7 @@ $router->get('/', [AppController::class,'index']);
 //rutas usuarios
 $router->get('/usuarios', [UsuarioController::class,'index'] );
 $router->post('/API/usuarios/guardar', [UsuarioController::class,'guardarAPI'] );
+$router->post('/API/usuarios/cambiarContrasena', [UsuarioController::class, 'cambiarContrasenaApi']);
 
 //rutas permiso
 $router->get('/permisos', [PermisoController::class,'index']);
@@ -25,6 +26,9 @@ $router->post('/API/permisos/eliminar', [PermisoController::class,'eliminarAPI']
 $router->get('/API/permisos/buscar', [PermisoController::class,'buscarAPI'] );
 $router->post('/API/permisos/activar', [PermisoController::class,'activarAPI'] );
 $router->post('/API/permisos/desactivar', [PermisoController::class,'desactivarAPI'] );
+// Ruta para cambiar contraseña
+$router->post('/exam_parcial/API/usuarios/cambiarContrasena', [UsuarioController::class, 'cambiarContrasenaApi']);
+
 //$router->post('/API/permisos/buscarUsuario', [PermisoController::class,'buscarUsuarioAPI'] );
 
 

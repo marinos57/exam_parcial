@@ -22,7 +22,7 @@
                     <input type="password" class="form-control" id="usu_password" name="usu_password" autocomplete="new-password" placeholder="Ingrese al menos 8 caracteres">
                 </div>
                 <div class="col">
-                    <button type="submit" form="formularioUsuarios" id="btnGuardar" class="btn btn-primary w-100">Guardar</button>
+                    <button type="submit" form="formularioUsuarios" id="btnCambiarContrasena" class="btn btn-primary w-100">Guardar</button>
                 </div>
             </form>
         </div>

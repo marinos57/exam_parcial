@@ -51,6 +51,16 @@ const datatable = new Datatable('#tablaPermisos', {
             title : 'ESTADO',
             data: 'usu_estado',
         },
+
+            {
+                title: 'CAMBIAR CONTRASEÑA',
+                data: 'usu_id', 
+                searchable: false,
+                orderable: false,
+                render: (data, type, row, meta) => `<button class="btn btn-dark btnCambiarContraseña" data-id='${data}'>Cambiar contraseña</button>`
+            },
+            
+        
         {
             title : 'MODIFICAR',
             data: 'permiso_id',
@@ -398,6 +408,83 @@ const desactivar = async (e) => {
     }
 }
 
+// Constantes
+const contenedorContraseña = document.getElementById('contenedorContraseña');
+const btnCancelarContraseña = document.getElementById('btnCancelarContraseña');
+
+contenedorContraseña.style.display = 'none';
+
+// Agregar evento al contenedor DataTable para delegación de eventos
+datatable.on('click', '.btnCambiarContraseña', mostrarContenedor);
+btnCancelarContraseña.addEventListener('click', ocultarContenedor);
+
+// Mostrar el contenedor al hacer clic en el botón de modificar contraseña
+function mostrarContenedor(event) {
+    event.preventDefault(); // Evitar que el botón realice su acción por defecto
+    contenedorContraseña.style.display = 'block';
+    
+    const btnCambiarContraseña = event.target;
+    const idUsuario = btnCambiarContraseña.getAttribute('data-id');
+    btnCambiarContraseña.removeEventListener('click', mostrarContenedor); // Remover el evento para evitar duplicación
+    btnCambiarContraseña.addEventListener('click', () => cambiarContraseña(idUsuario)); // Adjuntar evento a la función cambiarContraseña con el ID del usuario
+}
+
+// Ocultar el contenedor al hacer clic en el botón de cancelar
+function ocultarContenedor() {
+    contenedorContraseña.style.display = 'none';
+}
+
+// Función para cambiar la contraseña
+const cambiarContraseña = async (idUsuario) => {
+    const nuevaContraseña = document.getElementById('nuevaContraseña').value;
+
+    const url = '/exam_parcial/API/usuarios/cambiarContrasena';
+    const body = new FormData();
+    body.append('usu_id', idUsuario);
+    body.append('nueva_contraseña', nuevaContraseña);
+
+    const headers = new Headers();
+    headers.append("X-Requested-With", "fetch");
+
+    const config = {
+        method: 'POST',
+        body,
+        headers
+    };
+
+    try {
+        const respuesta = await fetch(url, config);
+        const data = await respuesta.json();
+
+        const { codigo, mensaje } = data;
+        let icon = 'info';
+
+        switch (codigo) {
+            case 1:
+                icon = 'success';
+                ocultarContenedor(); // Ocultar el contenedor después de cambiar la contraseña
+                break;
+
+            case 0:
+                icon = 'error';
+                console.log(mensaje);
+                break;
+
+            default:
+                break;
+        }
+
+        Toast.fire({
+            icon,
+            text: mensaje
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
 
 
 // const buscarUsuario = async () => {
@@ -474,6 +561,8 @@ const cancelarAccion = () => {
 
 
 
+
+
 buscar();
 
 //datatable.on('click','.btn-warning', traeDatos )
@@ -486,8 +575,11 @@ datatable.on('click','.btn-warning', traeDatos )
 datatable.on('click','.btn-danger', eliminar )
 datatable.on('click','.btn-success', activar )
 datatable.on('click','.btn-info', desactivar )
-
-
+// Agregar evento para el botón de cambiar contraseña
+btnCambiarContraseña.addEventListener('click', cambiarContraseña);
+btnCancelarContraseña.addEventListener('click', ocultarContenedor);
+// btnCambiarContrasena.addEventListener('click', btnCambiarContrasena);
+// 
 
 
 

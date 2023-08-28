@@ -51,19 +51,21 @@
         </div>
     </form>
 </div>
+<!-- Vista para cambiar contraseña -->
 <div id="contenedorContraseña">
     <h2>Cambiar Contraseña</h2>
     <form id="formularioContraseña">
         <div class="row mb-3">
             <div class="col">
-                <label for="usu_password">Nueva Contraseña:</label>
-                <input type="password" id="usu_password" name="usu_password" class="form-control" required>
+                <label for="nuevaContraseña">Nueva Contraseña:</label>
+                <input type="password" id="nuevaContraseña" class="form-control" required>
             </div>
         </div>
-        <button type="submit" form="formularioContraseña" class="btn btn-primary">Cambiar Contraseña</button>
+        <button type="button" id="btnCambiarContraseña" class="btn btn-primary">Cambiar Contraseña</button>
         <button type="button" id="btnCancelarContraseña" class="btn btn-secondary">Cancelar</button>
     </form>
 </div>
+
 <h1>Datatable de listado de usuario</h1>
 <div class="row justify-content-center">
     <div class="col table-responsive">

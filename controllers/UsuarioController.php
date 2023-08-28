@@ -5,7 +5,9 @@ namespace Controllers;
 use Exception;
 use Model\Usuario;
 use MVC\Router;
-
+use Model\Permiso;
+use Model\ActiveRecord;
+use Model\Rol;
 class UsuarioController
 {
 
@@ -65,5 +67,50 @@ class UsuarioController
         ]);
     }
 }
+
+// Función del controlador para cambiar contraseña
+public static function cambiarContrasenaApi()
+{
+    try {
+        $idUsuario = $_POST['usu_id'];
+        $nuevaContraseña = $_POST['nueva_contraseña'];
+
+        // Obtener el usuario por su ID usando fetchFirst
+        $usuario = Usuario::fetchFirst("usu_id = :id", [":id" => $idUsuario]); 
+
+        if (!$usuario) {
+            echo json_encode([
+                'mensaje' => 'Usuario no encontrado',
+                'codigo' => 0
+            ]);
+            return;
+        }
+
+        // Actualizar la contraseña en la instancia del usuario
+        $usuario['usu_password'] = password_hash($nuevaContraseña, PASSWORD_DEFAULT);
+        
+        // Guardar los cambios en la base de datos usando fetchArray
+        $resultado = $usuario->guardar();
+
+        if ($resultado['resultado'] == 1) {
+            echo json_encode([
+                'mensaje' => 'Contraseña cambiada correctamente',
+                'codigo' => 1
+            ]);
+        } else {
+            echo json_encode([
+                'mensaje' => 'Ocurrió un error al cambiar la contraseña',
+                'codigo' => 0
+            ]);
+        }
+    } catch (Exception $e) {
+        echo json_encode([
+            'detalle' => $e->getMessage(),
+            'mensaje' => 'Ocurrió un error',
+            'codigo' => 0
+        ]);
+    }
+}
+
 
 }
