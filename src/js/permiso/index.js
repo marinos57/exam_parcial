@@ -10,9 +10,9 @@ const btnGuardar = document.getElementById('btnGuardar');
 const btnBuscar = document.getElementById('btnBuscar');
 const btnModificar = document.getElementById('btnModificar');
 const btnCancelar = document.getElementById('btnCancelar');
-const divPassword = document.getElementById('usu_password');
+//const divPassword = document.getElementById('usu_password');
 
-divPassword.parentElement.style.display = 'none';
+//divPassword.parentElement.style.display = 'none';
 
 btnModificar.disabled = true
 btnModificar.parentElement.style.display = 'none'
@@ -193,11 +193,11 @@ const traeDatos = (e) => {
         body.append('permiso_id', id);
         body.append('permiso_usuario', usuario);
         body.append('permiso_rol', rol); 
-        const passwordInput = formulario.usu_password;
-        formulario.usu_password.value = dataset.password;
-        passwordInput.readOnly = true;
+        // const passwordInput = formulario.usu_password;
+        // formulario.usu_password.value = dataset.password;
+        // passwordInput.readOnly = true;
 
-        divPassword.parentElement.style.display = ' block';
+        // divPassword.parentElement.style.display = ' block';
 };
 
 
@@ -209,55 +209,21 @@ const modificar = async () => {
         return 
     }
 
-    const { value: newPassword } = await Swal.fire({
-        title: 'Ingrese la nueva contraseña:',
-        input: 'password',
-        inputAttributes: {
-            autocapitalize: 'off',
-            autocorrect: 'off'
-        },
-        showCancelButton: true,
-        confirmButtonText: 'Guardar',
-        cancelButtonText: 'Cancelar',
-        inputValidator: (value) => {
-            if (!value) {
-                return 'Debe ingresar una contraseña';
-            }
-        }
-    });
-
-    if (newPassword === undefined) {
-        return;
-    }
-
-    const id = formulario.permiso_id.value;
-    const permiso_usuario = formulario.permiso_usuario.value;
-    const permiso_rol = formulario.permiso_rol.value;
-
-    
-
-    const url = '/exam_parcial/API/permisos/modificar';
     const body = new FormData(formulario)
-    body.append('permiso_id', id);
-    body.append('usu_password', newPassword);
-    body.append('permiso_usuario', permiso_usuario);
-    body.append('permiso_rol', permiso_rol);
+    const url = '/exam_parcial/API/permisos/modificar';
     const config = {
         method : 'POST',
         body
     }
 
-
     try {
         const respuesta = await fetch(url, config)
         const data = await respuesta.json();
-        // console.log(data)
-        // return;
+        
         const {codigo, mensaje,detalle} = data;
         let icon = 'info'
         switch (codigo) {
             case 1:
-                formulario.usu_password.value = newPassword;
                 formulario.reset();
                 icon = 'success'
                 buscar();
@@ -282,7 +248,6 @@ const modificar = async () => {
         console.log(error);
     }
 }
-
 ///eliminar
 
 
@@ -502,7 +467,7 @@ const cancelarAccion = () => {
     btnCancelar.disabled = true
     btnCancelar.parentElement.style.display = 'none'
 
-    divPassword.parentElement.style.display = 'none';
+    //divPassword.parentElement.style.display = 'none';
 
    
 }

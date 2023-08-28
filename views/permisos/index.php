@@ -4,14 +4,14 @@
         <input type="hidden" name="permiso_id" id="permiso_id">
         <!-- se agregara este input para cambiar la contraseña -->
         
-        <div class="row mb-4 mt-3">
+        <!-- <div class="row mb-4 mt-3">
             <div class="col-lg-12">
                 <div id="usu_password"  class="col">
                     <label for="usu_password">Presione para cambiar la contrasena</label>
                     <input type="password" name="usu_password" id="usu_password" class="form-control">
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row mb-3">
             <div class="col">
                 <label for="permiso_usuario">USUARIO</label>
@@ -49,6 +49,19 @@
                 <button type="button" id="btnCancelar" class="btn btn-danger w-100">Cancelar</button>
             </div>
         </div>
+    </form>
+</div>
+<div id="contenedorContraseña">
+    <h2>Cambiar Contraseña</h2>
+    <form id="formularioContraseña">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="usu_password">Nueva Contraseña:</label>
+                <input type="password" id="usu_password" name="usu_password" class="form-control" required>
+            </div>
+        </div>
+        <button type="submit" form="formularioContraseña" class="btn btn-primary">Cambiar Contraseña</button>
+        <button type="button" id="btnCancelarContraseña" class="btn btn-secondary">Cancelar</button>
     </form>
 </div>
 <h1>Datatable de listado de usuario</h1>
