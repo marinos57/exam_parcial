@@ -20,7 +20,7 @@ btnCancelar.parentElement.style.display = 'none'
 
 
 let contador = 1; 
-const datatable = new Datatable('#tablaClientes', {
+const datatable = new Datatable('#tablaPermisos', {
     language : lenguaje,
     data : null,
     columns: [
