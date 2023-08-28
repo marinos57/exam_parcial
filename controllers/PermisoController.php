@@ -209,7 +209,45 @@ class PermisoController
         $usu_id = $_GET['usu_id'];
         $rol_id = $_GET['rol_id'];
 
-        
+        $sql = "SELECT
+        p.permiso_id,
+        u.usu_nombre AS permiso_usuario,
+        u.usu_id,
+        r.rol_nombre AS permiso_rol,
+        r.rol_id,
+        u.usu_estado
+    FROM
+        permiso p
+    INNER JOIN
+        usuario u ON p.permiso_usuario = u.usu_id
+    INNER JOIN
+        rol r ON p.permiso_rol = r.rol_id
+    WHERE
+        p.permiso_situacion = 1";
+
+if ($usu_id != '') {
+    $sql .= " AND usuarios.usu_id = '$usu_id'";
+}
+
+if ($rol_id != '') {
+    $sql .= " AND roles.rol_id = '$rol_id'";
+}
+
+
+try{
+    $permisos = Permiso::fetchArray($sql);
+    echo json_encode($permisos);
+
+}catch (Exception $e) {
+    echo json_encode([
+        'detalle' => $e->getMessage(),
+        'mensaje' => 'Ocurrió un error',
+        'codigo' => 0
+    ]);
+}
+}
+}
+
            
 
 
