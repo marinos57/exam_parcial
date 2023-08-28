@@ -142,6 +142,36 @@ class PermisoController
         }
     }
 
+    public static function activarAPI(){
+       
+    
+        try {
+            $usu_id = $_POST['usu_id'];
+            $sql = "UPDATE usuario set usu_estado = 'ACTIVO' where usu_id = ${usu_id}";
+            $resultado = Usuario::SQL($sql);
+            $resultado=1;
+
+            if ($resultado == 1) {
+                echo json_encode([
+                    'mensaje' => 'Usuario activado correctamente' ,
+                    'codigo' => 1
+                ]);
+            } else {
+                echo json_encode([
+                    'mensaje' => 'Ocurrió un error al actualizar',
+                    'codigo' => 0
+                ]);
+            }
+           
+        } catch (Exception $e) {
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje' => 'Ocurrió un error',
+                'codigo' => 0
+            ]);
+        }
+    }
+
 
 
 
