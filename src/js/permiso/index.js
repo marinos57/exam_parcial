@@ -72,3 +72,33 @@ const datatable = new Datatable('#tablaClientes', {
     ]
 })
 
+//buscar 
+
+const buscar = async () => {
+    let permiso_usuario = formulario.permiso_usuario.value;
+    let permiso_rol = formulario.permiso_rol.value;
+    const url = `/exam_parcial/API/permisos/buscar?permiso_usuario=${permiso_usuario}&permiso_rol=${permiso_rol}`;
+    const config = {
+        method : 'GET'
+    }
+
+    try {
+        const respuesta = await fetch(url, config)
+        const data = await respuesta.json();
+
+        console.log(data);
+        datatable.clear().draw()
+        if(data){
+            contador = 1;
+            datatable.rows.add(data).draw();
+        }else{
+            Toast.fire({
+                title : 'No se encontraron registros',
+                icon : 'info'
+            })
+        }
+       
+    } catch (error) {
+        console.log(error);
+    }
+}
