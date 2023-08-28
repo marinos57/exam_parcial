@@ -42,7 +42,36 @@ class RolController{
         }
     }
 
-    public static function modificarAPI()
+    public static function modificarAPI(){
+
+        try {
+            $rol = new Rol($_POST);
+            $resultado = $rol->actualizar();
+
+            if ($resultado['resultado'] == 1) {
+                echo json_encode([
+                    'mensaje' => 'Registro modificado correctamente',
+                    'codigo' => 1
+                ]);
+                } else {
+                    echo json_encode([
+                        'mensaje'=>'No se encontraron registros a actualizar',
+                        'codigo' => 0
+                    ]);
+
+                }
+            //code...
+        } catch (Exception  $e) {
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje'=>"Error al realizar la operación",
+                'codigo' => 0
+
+            ]);
+            //throw $th;
+        }
+
+    }
 
 
 
