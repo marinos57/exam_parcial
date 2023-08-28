@@ -7,7 +7,9 @@ module.exports = {
     'js/app' : './src/js/app.js',
     'js/inicio' : './src/js/inicio.js',
     'js/usuario/index' : './src/js/usuario/index.js',
-    'js/permiso/index' : './src/js/permiso/index.js'
+    'js/permiso/index' : './src/js/permiso/index.js',
+    'js/roles/index' : './src/js/roles/index.js'
+
 
 
   },
