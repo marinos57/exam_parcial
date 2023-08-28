@@ -52,3 +52,11 @@ class PermisoController
 
     }
 
+    public static function guardarAPI(){
+
+
+        
+    }
+
+
+
