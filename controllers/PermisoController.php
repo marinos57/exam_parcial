@@ -61,9 +61,26 @@ class PermisoController
             $resultado = new $permiso->crear();
 
 
+            if ($resultado['resultado'] == 1) {
+                echo json_encode([
+                    'mensaje' => 'Registro guardado correctamente',
+                    'codigo' => 1
+                ]);
+                }else{
+                    echo json_encode([
+                        'mensaje'=>'Error al registrar el registro',
+                        'codigo' => 0
+                        
+
+                    ]);
+                 }
 
         } catch (Exception $e) {
             //throw $th;
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje' => 'OCURRIO UN ERROR', 
+            ]); 
         }
 
 
