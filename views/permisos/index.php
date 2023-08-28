@@ -2,6 +2,16 @@
 <div class="row justify-content-center mb-5">
     <form class="col-lg-8 border bg-light p-3" id="formularioPermiso">
         <input type="hidden" name="permiso_id" id="permiso_id">
+        <!-- se agregara este input para cambiar la contraseña -->
+        
+        <div class="row mb-4 mt-3">
+            <div class="col-lg-12">
+                <div id="usu_password"  class="col">
+                    <label for="usu_password">Presione para cambiar la contrasena</label>
+                    <input type="password" name="usu_password" id="usu_password" class="form-control">
+                </div>
+            </div>
+        </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="permiso_usuario">USUARIO</label>
