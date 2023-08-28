@@ -214,15 +214,16 @@ class PermisoController
         r.rol_id,
         u.usu_estado
     FROM
-        permiso p
-    INNER JOIN
-        usuario u ON p.permiso_usuario = u.usu_id
-    INNER JOIN
+        usuario u
+    LEFT JOIN
+        permiso p ON u.usu_id = p.permiso_usuario
+    LEFT JOIN
         rol r ON p.permiso_rol = r.rol_id
     WHERE
-        p.permiso_situacion = 1 AND
-        (u.usu_estado = 'PENDIENTE' OR u.usu_estado = 'ACTIVO' OR u.usu_estado = 'INACTIVO') AND
-        u.usu_situacion = 1;
+        (u.usu_situacion = 1) AND
+        (u.usu_estado = 'PENDIENTE' OR u.usu_estado = 'ACTIVO' OR u.usu_estado = 'INACTIVO') OR
+        (p.permiso_situacion = 1) OR
+        p.permiso_id IS NULL;
     ";
 
         if ($usu_id != '') {
