@@ -401,7 +401,36 @@ const colocarDatos = (dataset) => {
 }
 
 
+///// cancelar accion
 
-// cancelar accion
+const cancelarAccion = () => {
+    btnGuardar.disabled = false
+    btnGuardar.parentElement.style.display = ''
+    btnBuscar.disabled = false
+    btnBuscar.parentElement.style.display = ''
+    btnModificar.disabled = true
+    btnModificar.parentElement.style.display = 'none'
+    btnCancelar.disabled = true
+    btnCancelar.parentElement.style.display = 'none'
+   
+}
+
+
+
+buscar();
+
+//datatable.on('click','.btn-warning', traeDatos )
+
+formulario.addEventListener('submit', guardar)
+btnBuscar.addEventListener('click', buscar)
+btnCancelar.addEventListener('click', cancelarAccion)
+btnModificar.addEventListener('click', modificar)
+datatable.on('click','.btn-warning', traeDatos )
+datatable.on('click','.btn-danger', eliminar )
+datatable.on('click','.btn-success', activar )
+datatable.on('click','.btn-info', desactivar )
+
+
+
 
 
