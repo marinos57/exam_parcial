@@ -17,50 +17,53 @@ class UsuarioController
         ]);
     }
 
-    public static function guardarAPI()
-    {
-        try {
-            $nombre = $_POST["usu_nombre"];
-            $catalogo = $_POST["usu_catalogo"];
-            $password = $_POST["usu_password"];
-            $confirm_password = $_POST["usu_confirm_password"];
+    public static function guardarApi()
+{
+    try {
+        $nombre = $_POST['usu_nombre'];
+        $apellido = $_POST['usu_apellido'];
+        $usuario = $_POST['usu_usuario'];
+        $password = $_POST['usu_password'];
 
-            if ($password) {
-                
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                $usuario = new Usuario([
-                    'usu_nombre' => $nombre,
-                    'usu_catalogo' => $catalogo,
-                    'usu_password' => $hashed_password,
-                ]);
-
-                $resultado = $usuario->crear();
-
-                if ($resultado['resultado'] == 1) {
-                    echo json_encode([
-                        'mensaje' => 'usuario guardado correctamente',
-                        'codigo' => 1
-                    ]);
-                } else {
-                    echo json_encode([
-                        'mensaje' => 'Ocurrió un error',
-                        'codigo' => 0
-                    ]);
-                }
-            } else {
-                echo json_encode([
-                    'mensaje' => 'Las contraseña no es correcta.',
-                    'codigo' => 0
-                ]);
-            }
-
-        } catch (Exception $e) {
+        // Aquí se valida si ya existe un usuario con el mismo nombre de usuario
+        $usuarioExistente = Usuario::fetchFirst("SELECT * FROM usuario WHERE usu_usuario = '$usuario'");
+        if ($usuarioExistente) {
             echo json_encode([
-                'detalle' => $e->getMessage(),
-                'mensaje' => 'Ocurrió un error',
+                'mensaje' => 'El nombre de usuario ya está en uso',
+                'codigo' => 0
+            ]);
+            return;
+        }
+
+        // Aquí se crea un nuevo objeto Usuario para guardar en la base de datos
+        $nuevoUsuario = new Usuario([
+            'usu_nombre' => $nombre,
+            'usu_apellido' => $apellido,
+            'usu_usuario' => $usuario,
+            'usu_password' => password_hash($password, PASSWORD_DEFAULT),
+            'usu_situacion' => 1
+        ]);
+
+        $resultado = $nuevoUsuario->guardar();
+
+        if ($resultado['resultado'] == 1) {
+            echo json_encode([
+                'mensaje' => 'Registro guardado correctamente',
+                'codigo' => 1
+            ]);
+        } else {
+            echo json_encode([
+                'mensaje' => 'Ocurrió un error al guardar el registro',
                 'codigo' => 0
             ]);
         }
+    } catch (Exception $e) {
+        echo json_encode([
+            'detalle' => $e->getMessage(),
+            'mensaje' => 'Ocurrió un error',
+            'codigo' => 0
+        ]);
     }
+}
+
 }

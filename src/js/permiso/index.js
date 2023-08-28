@@ -29,6 +29,14 @@ const datatable = new Datatable('#tablaPermisos', {
             render : () => contador ++
             
         },
+        // { title: 'NOMBRE', 
+        // data: 'usu_nombre' },
+
+        // { title: 'APELLIDO', 
+        // data: 'usu_apellido' },
+
+        // { title: 'NOMBRE DE USUARIO', 
+        // data: 'usu_usuario' },
         {
             title : 'USUARIO',
             data: 'permiso_usuario'
@@ -378,6 +386,40 @@ const desactivar = async (e) => {
     }
 }
 
+
+
+// const buscarUsuario = async () => {
+//     let usu_nombre = formulario.usu_nombre.value;
+//     let usu_apellido = formulario.usu_apellido.value;
+//     let usu_usuario = formulario.usu_usuario.value;
+
+//     const url = `/exam_parcial/API/permisos/buscarUsuario?usu_nombre=${usu_nombre}&usu_apellido=${usu_apellido}&usu_usuario=${usu_usuario}`;
+    
+//     const config = {
+//         method: 'GET'
+//     }
+
+//     try {
+//         const respuesta = await fetch(url, config)
+//         const data = await respuesta.json();
+
+//         console.log(data);
+//         datatable.clear().draw()
+//         if(data){
+//             contador = 1;
+//             datatable.rows.add(data).draw();
+            
+//         }else{
+//             Toast.fire({
+//                 title : 'No se encontraron registros',
+//                 icon : 'info'
+//             })
+//         }
+       
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 /// colocar datos
 

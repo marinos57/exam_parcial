@@ -79,7 +79,7 @@ class PermisoController
             ]);
         }
     }
-    
+
     public static function modificarAPI()
     {
 
@@ -239,4 +239,37 @@ class PermisoController
             ]);
         }
     }
+
+    // public static function buscarUsuarioAPI()
+    // {
+    //     $usu_nombre = $_GET['usu_nombre'];
+    //     $usu_apellido = $_GET['usu_apellido'];
+    //     $usu_usuario = $_GET['usu_usuario'];
+
+    //     $sql = "SELECT * FROM usuario"; // Usar tabla 'usuario' 
+
+    //     if ($usu_nombre) {
+    //         $sql .= " AND usu_nombre LIKE '%$usu_nombre%'";
+    //     }
+
+    //     if ($usu_apellido) {
+    //         $sql .= " AND usu_apellido LIKE '%$usu_apellido%'";
+    //     }
+
+    //     if ($usu_usuario) {
+    //         $sql .= " AND usu_usuario LIKE '%$usu_usuario%'";
+    //     }
+
+    //     try {
+    //         $usuarios = Usuario::fetchArray($sql);
+    //         header('Content-Type: application/json');
+    //         echo json_encode($usuarios);
+    //     } catch (Exception $e) {
+    //         echo json_encode([
+    //             'detalle' => $e->getMessage(),
+    //             'mensaje' => 'Ocurrió un error',
+    //             'codigo' => 0
+    //         ]);
+    //     }
+    // }
 }

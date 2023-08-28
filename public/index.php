@@ -25,6 +25,8 @@ $router->post('/API/permisos/eliminar', [PermisoController::class,'eliminarAPI']
 $router->get('/API/permisos/buscar', [PermisoController::class,'buscarAPI'] );
 $router->post('/API/permisos/activar', [PermisoController::class,'activarAPI'] );
 $router->post('/API/permisos/desactivar', [PermisoController::class,'desactivarAPI'] );
+//$router->post('/API/permisos/buscarUsuario', [PermisoController::class,'buscarUsuarioAPI'] );
+
 
 
 //rutas roles

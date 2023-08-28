@@ -9,8 +9,12 @@
                     <input type="text" class="form-control" id="usu_nombre" name="usu_nombre" autocomplete="username">
                 </div>
                 <div class="mb-3">
-                    <label for="usu_catalogo" class="form-label">Catálogo</label>
-                    <input type="number" class="form-control" id="usu_catalogo" name="usu_catalogo">
+                    <label for="usu_apellido" class="form-label">apellido</label>
+                    <input type="text" class="form-control" id="usu_apellido" name="usu_apellido" autocomplete="username">
+                </div>
+                <div class="mb-3">
+                    <label for="usu_usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usu_usuario" name="usu_usuario">
                 </div>
                 <div class="mb-3">
                     <label for="usu_password" class="form-label">Contraseña</label>
