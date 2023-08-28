@@ -24,7 +24,7 @@
                 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0;">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/ejemplo/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
+                        <a class="nav-link" aria-current="page" href="/exam_parcial/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
   
                     <div class="nav-item dropdown " >
@@ -48,7 +48,7 @@
                         <a class="nav-link" aria-current="page" href="/exam_parcial/usuarios/estadistica"><i class="bi bi-house-fill me-2"></i>ESTADISTICA DE ACTIVOS E INACTIVOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/exam_parcial/usuarios/estadistica2/"><i class="bi bi-house-fill me-2"></i>ESTADISTICA DE CANTIDAD DE USUARIOS POR ROL</a>
+                        <a class="nav-link" aria-current="page" href="/exam_parcial/usuarios/estadistica2"><i class="bi bi-house-fill me-2"></i>ESTADISTICA DE CANTIDAD DE USUARIOS POR ROL</a>
                     </li>
 
                 </ul> 
