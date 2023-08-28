@@ -75,8 +75,8 @@ public static function cambiarContrasenaApi()
         $idUsuario = $_POST['usu_id'];
         $nuevaContraseña = $_POST['nueva_contraseña'];
 
-        // Obtener el usuario por su ID usando fetchFirst
-        $usuario = Usuario::fetchFirst("usu_id = :id", [":id" => $idUsuario]); 
+        // Obtener el usuario por su ID usando fetchFirst y una consulta SQL
+        $usuario = Usuario::fetchFirst("usu_id = $idUsuario");
 
         if (!$usuario) {
             echo json_encode([
@@ -86,11 +86,8 @@ public static function cambiarContrasenaApi()
             return;
         }
 
-        // Actualizar la contraseña en la instancia del usuario
-        $usuario['usu_password'] = password_hash($nuevaContraseña, PASSWORD_DEFAULT);
-        
-        // Guardar los cambios en la base de datos usando fetchArray
-        $resultado = $usuario->guardar();
+        // Actualizar la contraseña en el registro del usuario y guardar en la base de datos
+        $resultado = self::actualizarContrasenaUsuario($usuario, $nuevaContraseña);
 
         if ($resultado['resultado'] == 1) {
             echo json_encode([
@@ -110,6 +107,14 @@ public static function cambiarContrasenaApi()
             'codigo' => 0
         ]);
     }
+}
+
+// Función para actualizar la contraseña de un usuario en la base de datos
+private static function actualizarContrasenaUsuario($usuario, $nuevaContraseña)
+{
+   
+    $usuario['usu_password'] = password_hash($nuevaContraseña, PASSWORD_DEFAULT);
+
 }
 
 
