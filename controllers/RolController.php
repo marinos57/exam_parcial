@@ -73,6 +73,14 @@ class RolController{
 
     }
 
+    public static function eliminarAPI(){
+
+
+        
+    }
+
+
+
 
 
 
