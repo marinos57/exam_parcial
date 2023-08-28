@@ -35,10 +35,12 @@ class PermisoController
             return[]; 
         }
 
-
-
-
     }
 
 
+    public static function buscarRol(){
+
+
+
 }
+
