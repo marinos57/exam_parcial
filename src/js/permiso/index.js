@@ -102,3 +102,60 @@ const buscar = async () => {
         console.log(error);
     }
 }
+
+
+//guardar
+
+const guardar = async (evento) => {
+    evento.preventDefault();
+    if(!validarFormulario(formulario, ['permiso_id'])){
+        Toast.fire({
+            icon: 'info',
+            text: 'Debe llenar todos los datos'
+        })
+        return 
+    }
+
+    const body = new FormData(formulario)
+    body.delete('permiso_id')
+    const url = '/exam_parcial/API/permisos/guardar';
+    const headers = new Headers();
+    headers.append("X-Requested-With", "fetch");
+    const config = {
+        method : 'POST',
+        body
+    }
+
+    try {
+        const respuesta = await fetch(url, config)
+        const data = await respuesta.json();
+
+       
+        const {codigo, mensaje,detalle} = data;
+        let icon = 'info'
+        switch (codigo) {
+            case 1:
+                formulario.reset();
+                icon = 'success'
+                buscar();
+                break;
+        
+            case 0:
+                icon = 'error'
+                console.log(detalle)
+                break;
+        
+            default:
+                break;
+        }
+
+        Toast.fire({
+            icon,
+            text: mensaje
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
