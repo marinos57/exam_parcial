@@ -10,9 +10,19 @@ $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
 $router->get('/', [AppController::class,'index']);
-
+//rutas usuarios
 $router->get('/usuarios', [UsuarioController::class,'index'] );
 $router->post('/API/usuarios/guardar', [UsuarioController::class,'guardarAPI'] );
+
+//rutas permiso
+$router->get('/permisos', [PermisoController::class,'index']);
+$router->post('/API/permisos/guardar', [PermisoController::class,'guardarAPI'] );
+$router->post('/API/permisos/modificar', [PermisoController::class,'modificarAPI'] );
+$router->post('/API/permisos/eliminar', [PermisoController::class,'eliminarAPI'] );
+$router->get('/API/permisos/buscar', [PermisoController::class,'buscarAPI'] );
+$router->post('/API/permisos/activar', [PermisoController::class,'activarAPI'] );
+$router->post('/API/permisos/desactivar', [PermisoController::class,'desactivarAPI'] );
+
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
