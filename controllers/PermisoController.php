@@ -53,9 +53,20 @@ class PermisoController
     }
 
     public static function guardarAPI(){
-
-
         
+
+        try {
+            //code...
+            $permiso = new Permiso($_POST);
+            $resultado = new $permiso->crear();
+
+
+
+        } catch (Exception $e) {
+            //throw $th;
+        }
+
+
     }
 
 
