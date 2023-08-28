@@ -23,7 +23,17 @@ class PermisoController
     }
 
     public static function buscarUsuario(){
-        
+        $sql = "SELECT * FROM usuario where usu_situacion = 1";
+
+        try {
+            $usuarios = Usuario::fetchArray($sql);
+
+            return $usuarios;
+                       
+        } catch (Exception $e) {
+            //throw $th;
+            return[]; 
+        }
 
 
 
