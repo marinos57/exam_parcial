@@ -118,12 +118,15 @@ const buscar = async () => {
 
 const guardar = async (evento) => {
     evento.preventDefault();
-    if(!validarFormulario(formulario, ['permiso_id'])){
+    const permiso_usuario = formulario.permiso_usuario.value;
+    const permiso_rol = formulario.permiso_rol.value;
+
+    if (permiso_usuario === '' || permiso_rol === '') {
         Toast.fire({
             icon: 'info',
             text: 'Debe llenar todos los datos'
-        })
-        return 
+        });
+        return;
     }
 
     const body = new FormData(formulario)
@@ -133,12 +136,15 @@ const guardar = async (evento) => {
     headers.append("X-Requested-With", "fetch");
     const config = {
         method : 'POST',
+        
         body
     }
 
     try {
         const respuesta = await fetch(url, config)
         const data = await respuesta.json();
+        // console.log(data)
+        // return;
 
        
         const {codigo, mensaje,detalle} = data;

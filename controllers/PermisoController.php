@@ -112,7 +112,10 @@ class PermisoController
         try {
             $permiso_id = $_POST['permiso_id'];
             $permiso = Permiso::find($permiso_id);
-            $permiso->permiso_situacion = 0;
+
+            $permiso->permiso_rol = null;
+            //$permiso->permiso_situacion = 0;
+
             $resultado = $permiso->actualizar();
 
             if ($resultado['resultado'] == 1) {
@@ -217,7 +220,10 @@ class PermisoController
     INNER JOIN
         rol r ON p.permiso_rol = r.rol_id
     WHERE
-        p.permiso_situacion = 1";
+        p.permiso_situacion = 1 AND
+        (u.usu_estado = 'PENDIENTE' OR u.usu_estado = 'ACTIVO' OR u.usu_estado = 'INACTIVO') AND
+        u.usu_situacion = 1;
+    ";
 
         if ($usu_id != '') {
             $sql .= " AND usuarios.usu_id = '$usu_id'";
