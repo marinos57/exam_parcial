@@ -39,8 +39,16 @@ class PermisoController
 
 
     public static function buscarRol(){
+        $sql = "SELECT * FROM rol where rol_situacion = 1";
+        
+        try {
+            $roles = Rol::fetchArray($sql);
+            return $roles;
 
+        } catch (Exception $e) {
+            //throw $th;
+            return [];
+        }
 
-
-}
+    }
 
