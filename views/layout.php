@@ -29,18 +29,27 @@
   
                     <div class="nav-item dropdown " >
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-gear me-2"></i>Dropdown
+                            <i class="bi bi-gear me-2"></i>SELECCIONE
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark "id="dropwdownRevision" style="margin: 0;">
                             <!-- <h6 class="dropdown-header">Información</h6> -->
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/aplicaciones/nueva"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Subitem</a>
+                                <a class="dropdown-item nav-link text-white " href="/exam_parcial/usuarios"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>REGISTRO DE USUARIO</a>
                             </li>
-                        
-                    
-                        
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/exam_parcial/roles"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>FORMULARIO PARA INGRESAR ROLES</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/exam_parcial/permisos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>ASIGNACION DE ROLES Y LISTADOS</a>
+                            </li>
                         </ul>
-                    </div> 
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/exam_parcial/usuarios/estadistica"><i class="bi bi-house-fill me-2"></i>ESTADISTICA DE ACTIVOS E INACTIVOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/exam_parcial/usuarios/estadistica2/"><i class="bi bi-house-fill me-2"></i>ESTADISTICA DE CANTIDAD DE USUARIOS POR ROL</a>
+                    </li>
 
                 </ul> 
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
