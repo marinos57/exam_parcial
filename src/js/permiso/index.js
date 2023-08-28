@@ -228,5 +228,56 @@ const modificar = async () => {
     }
 }
 
+///eliminar
+
+
+const eliminar = async (e) => {
+    const button = e.target;
+    const id = button.dataset.id
+    // console.log(id)
+    if(await confirmacion('warning','¿Desea eliminar este registro?')){
+        const body = new FormData()
+        body.append('permiso_id', id)
+        const url = '/exam_parcial/API/permisos/eliminar';
+        const headers = new Headers();
+        headers.append("X-Requested-With","fetch");
+        const config = {
+            method : 'POST',
+            body
+        }
+        try {
+            const respuesta = await fetch(url, config)
+            const data = await respuesta.json();
+            // console.log(data)
+            const {codigo, mensaje,detalle} = data;
+    
+            let icon = 'info'
+            switch (codigo) {
+                case 1:
+                    icon = 'success'
+                    buscar();
+                    break;
+            
+                case 0:
+                    icon = 'error'
+                    console.log(detalle)
+                    break;
+            
+                default:
+                    break;
+            }
+    
+            Toast.fire({
+                icon,
+                text: mensaje
+            })
+    
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+
 
 
