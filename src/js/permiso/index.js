@@ -159,7 +159,7 @@ const guardar = async (evento) => {
     }
 }
 
-
+//traer y colocar los datos
 
 const traeDatos = (e) => {
     const button = e.target;
@@ -178,5 +178,7 @@ const traeDatos = (e) => {
         body.append('permiso_usuario', usuario);
         body.append('permiso_rol', rol);   
 };
+
+
 
 
