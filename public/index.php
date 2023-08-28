@@ -27,7 +27,7 @@ $router->post('/API/permisos/desactivar', [PermisoController::class,'desactivarA
 
 
 //rutas roles
-
+$router->get('/roles', [RolController::class,'index']);
 $router->post('/API/roles/guardar', [RolController::class,'guardarAPI'] );
 $router->post('/API/roles/modificar', [RolController::class,'modificarAPI'] );
 $router->post('/API/roles/eliminar', [RolController::class,'eliminarAPI'] );
