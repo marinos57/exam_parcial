@@ -85,10 +85,37 @@ class PermisoController
 
 
     }
+    public static function modificarAPI()
+    {
+   
+        try {
+            $permiso = new Permiso($_POST);
+            $resultado = $permiso->actualizar();
+
+            if ($resultado['resultado'] == 1) {
+                echo json_encode([
+                    'mensaje' => 'Registro modificado correctamente',
+                    'codigo' => 1
+                ]);
+            } else {
+                echo json_encode([
+                    'mensaje' => 'Ocurrió un error',
+                    'codigo' => 0
+                ]);
+            }
+
+        } catch (Exception $e) {
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje' => 'Ocurrió un error',
+                'codigo' => 0
+            ]);
+        }
+    }
 
 
 
-    
+
 
 
 }
