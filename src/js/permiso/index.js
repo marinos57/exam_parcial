@@ -438,7 +438,7 @@ function ocultarContenedor() {
 const cambiarContraseña = async (idUsuario) => {
     const nuevaContraseña = document.getElementById('nuevaContraseña').value;
 
-    const url = '/exam_parcial/API/usuarios/guardar';
+    const url = '/exam_parcial/API/usuarios/cambiarContrasena';
     const body = new FormData();
     body.append('usu_id', idUsuario);
     body.append('nueva_contraseña', nuevaContraseña);
