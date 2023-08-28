@@ -159,3 +159,24 @@ const guardar = async (evento) => {
     }
 }
 
+
+
+const traeDatos = (e) => {
+    const button = e.target;
+    const id = button.dataset.id;
+    const usuario = button.dataset.usuario;
+    const rol = button.dataset.rol;
+
+    const dataset = {
+        id,
+        usuario,
+        rol
+    };
+    colocarDatos(dataset);
+        const body = new FormData(formulario);
+        body.append('permiso_id', id);
+        body.append('permiso_usuario', usuario);
+        body.append('permiso_rol', rol);   
+};
+
+
